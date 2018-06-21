@@ -1,0 +1,14 @@
+anguage: cpp
+compiler: gcc
+sudo: false
+dist: trusty
+
+script:
+  - qmake PREFIX=/usr
+  - make -j$(nproc)
+
+
+branches:
+  except:
+    - # Do not build tags that we create when we upload to GitHub Releases
+- /^(?i:continuous)/
