@@ -1,5 +1,9 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
+        <file>Pages/LoginPage/LoginPage.qml</file>
+    </qresource>
+    <qresource prefix="/Icons">
+        <file>Icons/qbittorrent-logo.svg</file>
     </qresource>
 </RCC>
