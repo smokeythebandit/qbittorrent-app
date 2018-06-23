@@ -86,8 +86,7 @@ void WebConnector::checkCredentials(std::function<void (bool)> callback){
 	}
 }
 
-void WebConnector::saveCookies()
-{
+void WebConnector::saveCookies() {
 	QList<QNetworkCookie> cookies = networkAccessManager.cookieJar()->cookiesForUrl(url());
 	QSettings settings;
 	settings.beginGroup(QLatin1String("cookies"));

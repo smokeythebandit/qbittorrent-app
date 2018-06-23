@@ -2,6 +2,9 @@
     <qresource prefix="/">
         <file>main.qml</file>
         <file>Pages/LoginPage/LoginPage.qml</file>
+        <file>Pages/Dashboard/Dashboard.qml</file>
+        <file>Controls/BurgerMenuButton/BurgerMenuButton.qml</file>
+        <file>Controls/TopBar/TopBar.qml</file>
     </qresource>
     <qresource prefix="/Icons">
         <file>Icons/qbittorrent-logo.svg</file>

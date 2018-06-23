@@ -2,11 +2,9 @@ import QtQuick 2.0
 import io.backend 1.0;
 import QtQuick.Dialogs 1.3
 import QtQuick.Controls 2.3
-import QtGraphicalEffects 1.0
-import QtQuick.LocalStorage 2.0
 
 Item {
-    id: item1
+    id: loginPage
     width: 270
     height: 480
     enabled: !connector.authenticating
@@ -21,8 +19,8 @@ Item {
     WebConnector {
         id: connector
         onAuthenticatingChanged: {
-            if(connector.authenticating) item1.state = "authenticating"
-            else item1.state = ""
+            if(connector.authenticating) loginPage.state = "authenticating"
+            else loginPage.state = ""
         }
         onLoggedInChanged: {
             if(!connector.loggedIn) {
@@ -93,30 +91,26 @@ Item {
         visible: false
         opacity: 0
     }
+
     states: [
         State {
             name: "authenticating"
-
             PropertyChanges {
                 target: txt_URL
                 visible: false
             }
-
             PropertyChanges {
                 target: txt_Username
                 visible: false
             }
-
             PropertyChanges {
                 target: txt_Password
                 visible: false
             }
-
             PropertyChanges {
                 target: btn_SignIn
                 visible: false
             }
-
             PropertyChanges {
                 target: busyIndicator
                 visible: true
