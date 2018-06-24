@@ -1,4 +1,5 @@
 import QtQuick 2.0
+import io.backend 1.0;
 import "../BurgerMenuButton"
 import QtQuick.Controls 2.3
 
@@ -7,7 +8,15 @@ Item {
     height: 50
     id: topBar
 
-    signal toggledChanged(bool toggled)
+    property bool toggled: false
+
+    onToggledChanged: {
+        if (toggled) {
+            btn_menu.state = "back"
+        } else {
+            btn_menu.state = "menu"
+        }
+    }
 
     Rectangle {
         id: rectangle
@@ -36,49 +45,39 @@ Item {
             anchors.left: parent.left
             anchors.leftMargin: 13
             anchors.verticalCenter: parent.verticalCenter
-            onStateChanged: {
-                toggledChanged(btn_menu.state == "back")
-            }
         }
 
         MouseArea {
+            id: mouseArea
             anchors.fill: btn_menu
-            onClicked: {
-                if (btn_menu.state == "back") {
-                    btn_menu.state = "menu"
-                } else {
-                    btn_menu.state = "back"
-                }
-            }
+            onClicked: toggled = !toggled
         }
 
         TextField {
             id: txt_Search
-            text: qsTr("")
-            anchors.right: text1.left
-            anchors.rightMargin: 6
-            placeholderText: "Search..."
             anchors.bottom: parent.bottom
             anchors.bottomMargin: 10
             anchors.top: parent.top
             anchors.topMargin: 10
+            anchors.right: text1.left
+            anchors.rightMargin: 6
+            placeholderText: "Search..."
             anchors.left: btn_menu.right
             anchors.leftMargin: 13
-            onFocusChanged: {
-                if(txt_Search.focus) {
-                    btn_menu.state = "menu"
-                }
-            }
+            onFocusChanged: if (focus) toggled = false
         }
 
         Text {
             id: text1
             x: 264
             y: 22
-            text: qsTr("↓0B/s, ↑0B/s")
+            width: 70
+            text: GlobalTransferInfo.transferSpeed
+            horizontalAlignment: Text.AlignHCenter
+            anchors.verticalCenterOffset: 0
             anchors.verticalCenter: parent.verticalCenter
             anchors.right: parent.right
-            anchors.rightMargin: 13
+            anchors.rightMargin: 6
             font.pixelSize: 12
         }
     }

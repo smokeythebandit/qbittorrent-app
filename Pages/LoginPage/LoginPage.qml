@@ -7,7 +7,7 @@ Item {
     id: loginPage
     width: 270
     height: 480
-    enabled: !connector.authenticating
+    enabled: !WebConnector.authenticating
 
     MessageDialog {
         id: messageDialog
@@ -16,23 +16,10 @@ Item {
         text: "Invalid Username/Password"
     }
 
-    WebConnector {
-        id: connector
-        onAuthenticatingChanged: {
-            if(connector.authenticating) loginPage.state = "authenticating"
-            else loginPage.state = ""
-        }
-        onLoggedInChanged: {
-            if(!connector.loggedIn) {
-                messageDialog.open()
-            }
-        }
-    }
-
     TextField {
         id: txt_URL
         selectByMouse: true
-        text: connector.url
+        text: WebConnector.url
         anchors.top: parent.top
         anchors.topMargin: 16
         anchors.left: parent.left
@@ -40,13 +27,13 @@ Item {
         anchors.right: parent.right
         anchors.rightMargin: 16
         placeholderText: qsTr("URL")
-        onEditingFinished: connector.url = txt_URL.text
+        onEditingFinished: WebConnector.url = txt_URL.text
     }
 
     TextField {
         id: txt_Username
         selectByMouse: true
-        text: connector.username
+        text: WebConnector.username
         anchors.top: txt_URL.bottom
         anchors.topMargin: 16
         anchors.left: parent.left
@@ -54,13 +41,13 @@ Item {
         anchors.right: parent.right
         anchors.rightMargin: 16
         placeholderText: qsTr("Username")
-        onEditingFinished: connector.username = txt_Username.text
+        onEditingFinished: WebConnector.username = txt_Username.text
     }
 
     TextField {
         id: txt_Password
         selectByMouse: true
-        text: connector.password
+        text: WebConnector.password
         anchors.top: txt_Username.bottom
         anchors.topMargin: 16
         anchors.left: parent.left
@@ -69,7 +56,7 @@ Item {
         anchors.rightMargin: 16
         placeholderText: qsTr("Password")
         echoMode: TextInput.Password
-        onEditingFinished: connector.password = txt_Password.text
+        onEditingFinished: WebConnector.password = txt_Password.text
     }
 
     Button {
@@ -81,7 +68,7 @@ Item {
         text: qsTr("Sign in")
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 16
-        onClicked: connector.attemptLogin()
+        onClicked: WebConnector.attemptLogin()
     }
 
     BusyIndicator {

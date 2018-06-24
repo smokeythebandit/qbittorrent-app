@@ -1,14 +1,15 @@
-#include "Backend/WebConnector.h"
 #include <QIcon>
+#include <Backend/Backend.h>
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 
 int main(int argc, char *argv[])
 {
 
-//	QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+	QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 	//Register all classes
-	qmlRegisterType<WebConnector>("io.backend", 1, 0, "WebConnector");
+	qmlRegisterSingletonType<WebConnector>("io.backend", 1, 0, "WebConnector", &Backend::webConnector);
+	qmlRegisterSingletonType<GlobalTransferInfo>("io.backend", 1, 0, "GlobalTransferInfo", &Backend::globalTransferInfo);
 
 	QGuiApplication app(argc, argv);
 	app.setWindowIcon(QIcon(":/Icons/Icons/qbittorrent-logo.svg"));

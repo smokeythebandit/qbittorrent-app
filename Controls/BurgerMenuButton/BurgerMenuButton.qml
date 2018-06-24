@@ -12,7 +12,6 @@ Item {
     y: 5
     width: 20
     height: 2
-    antialiasing: true
   }
 
   Rectangle {
@@ -22,7 +21,6 @@ Item {
     y: 10
     width: 20
     height: 2
-    antialiasing: true
   }
 
   Rectangle {
@@ -32,7 +30,6 @@ Item {
     y: 15
     width: 20
     height: 2
-    antialiasing: true
   }
 
 

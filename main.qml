@@ -16,15 +16,17 @@ Window {
 
 
     Component.onCompleted: {
-        connector.attemptLogin();
+        WebConnector.attemptLogin();
     }
 
-    WebConnector {
-        id: connector
+    Connections {
+        target: WebConnector
         onLoggedInChanged: {
-            if(!connector.loggedIn) loginPopup.open();
+            if(WebConnector.loggedIn) loginPopup.close()
+            else loginPopup.open()
         }
     }
+
 
     Dashboard {
         id: dashboard

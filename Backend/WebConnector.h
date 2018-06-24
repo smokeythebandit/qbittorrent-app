@@ -20,7 +20,7 @@ class WebConnector : public QObject
 		Q_PROPERTY(QString password READ password WRITE setPassword NOTIFY passwordChanged)
 		Q_PROPERTY(bool authenticating READ isAuthenticating WRITE setAuthenticating NOTIFY authenticatingChanged)
 
-		explicit WebConnector(QObject *parent = nullptr);
+		explicit WebConnector(QNetworkAccessManager* m_networkAccessManager, QObject *parent = nullptr);
 		~WebConnector();
 
 		/**
@@ -75,10 +75,10 @@ class WebConnector : public QObject
 		void authenticatingChanged();
 
 	private:
-		bool m_authenticating;
 		bool m_loggedIn;	///< Contains the login status
 		QSettings settings;	///< Contains the settings for the application
-		QNetworkAccessManager networkAccessManager; ///< Allows the application to send network requests and receive replies.
+		bool m_authenticating;
+		QNetworkAccessManager *m_networkAccessManager; ///< Allows the application to send network requests and receive replies.
 };
 
 #endif // WEBCONNECTOR_H

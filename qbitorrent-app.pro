@@ -14,7 +14,9 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         main.cpp \
-    Backend/WebConnector.cpp
+    Backend/WebConnector.cpp \
+    Backend/Backend.cpp \
+    Backend/GlobalTransferInfo.cpp
 
 RESOURCES += qml.qrc
 
@@ -30,4 +32,8 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 HEADERS += \
-    Backend/WebConnector.h
+    Backend/WebConnector.h \
+    Backend/Backend.h \
+    Backend/GlobalTransferInfo.h
+
+RC_ICONS = Icons/qbittorrent-logo.svg
