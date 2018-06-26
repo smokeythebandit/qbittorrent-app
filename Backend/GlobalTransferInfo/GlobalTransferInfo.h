@@ -4,9 +4,11 @@
 //Qt framework
 #include <QTimer>
 #include <QObject>
-#include <QtNetwork>
 
-class GlobalTransferInfo : public QObject
+//Internal headers
+#include "../AbstractApiInterface.h"
+
+class GlobalTransferInfo : public AbstractApiInterface
 {
 		Q_OBJECT
 	public:
@@ -16,7 +18,7 @@ class GlobalTransferInfo : public QObject
 		Q_PROPERTY(quint32 downloadRate READ downloadRate NOTIFY downloadRateChanged)
 		Q_PROPERTY(quint32 uploadRate READ uploadRate NOTIFY uploadRateChanged)
 
-		explicit GlobalTransferInfo(QNetworkAccessManager* networkAccessManager, QObject *parent = nullptr);
+		GlobalTransferInfo(QNetworkAccessManager *networkAccessManager, QObject *parent = nullptr);
 
 		QString transferSpeed() const;
 		quint64 downloadedBytes() const;
@@ -33,9 +35,6 @@ class GlobalTransferInfo : public QObject
 	public slots:
 		void update();
 
-	protected:
-		QUrl urlWithPath(const QString &path);
-
 	signals:
 		void downloadedBytesChanged();
 		void uploadedBytesChanged();
@@ -44,13 +43,10 @@ class GlobalTransferInfo : public QObject
 		void uploadRateChanged();
 
 	private:
-		QNetworkAccessManager *m_networkAccessManager; ///< Allows the application to send network requests and receive replies.
-		QSettings settings;	///< Contains the settings for the application
 		quint64 m_downloadedBytes;
 		quint64 m_uploadedBytes;
 		quint64 m_downloadRate;
 		quint64 m_uploadRate;
-		QTimer  m_updateTimer;
 
 };
 

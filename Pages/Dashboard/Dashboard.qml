@@ -1,4 +1,5 @@
 import QtQuick 2.0
+import io.backend 1.0
 import QtQuick.Controls 2.2
 import "../../Controls/TopBar"
 import "../../Controls/SideBar"
@@ -15,6 +16,7 @@ Item {
         onToggledChanged: {
             if(topbar.toggled) drawer.open()
             else drawer.close()
+            Torrents.update()
         }
     }
 
@@ -23,7 +25,8 @@ Item {
         id: drawer
         y: topbar.height
         z: 10
-        implicitWidth: topbar.width * 0.8
+        dragMargin: 20
+        implicitWidth: topbar.width * 0.6
         height: dashboard.height - topbar.height
         edge: Qt.LeftEdge
         onOpened: topbar.toggled = true

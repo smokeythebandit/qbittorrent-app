@@ -5,6 +5,14 @@ Backend::Backend(QObject *parent) : QObject(parent)
 
 }
 
+QObject *Backend::torrents(QQmlEngine *engine, QJSEngine *scriptEngine)
+{
+	Q_UNUSED(engine)
+	Q_UNUSED(scriptEngine)
+	static Torrents torrents(networkAccessManager());
+	return &torrents;
+}
+
 QObject *Backend::webConnector(QQmlEngine *engine, QJSEngine *scriptEngine) {
 	Q_UNUSED(engine)
 	Q_UNUSED(scriptEngine)

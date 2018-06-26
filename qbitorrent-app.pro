@@ -1,5 +1,9 @@
 QT += quick
-CONFIG += c++14
+CONFIG += c++14 warn_on
+
+linux-g++ {
+    QMAKE_CXXFLAGS += -Werror
+}
 
 # The following define makes your compiler emit warnings if you use
 # any feature of Qt which as been marked deprecated (the exact warnings
@@ -14,9 +18,12 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         main.cpp \
-    Backend/WebConnector.cpp \
     Backend/Backend.cpp \
-    Backend/GlobalTransferInfo.cpp
+    Backend/WebConnector/WebConnector.cpp \
+    Backend/GlobalTransferInfo/GlobalTransferInfo.cpp \
+    Backend/Torrents/Torrents.cpp \
+    Backend/AbstractApiInterface.cpp \
+    Backend/DebugMessageHandler.cpp
 
 RESOURCES += qml.qrc
 
@@ -32,8 +39,11 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 HEADERS += \
-    Backend/WebConnector.h \
     Backend/Backend.h \
-    Backend/GlobalTransferInfo.h
+    Backend/WebConnector/WebConnector.h \
+    Backend/GlobalTransferInfo/GlobalTransferInfo.h \
+    Backend/Torrents/Torrents.h \
+    Backend/AbstractApiInterface.h \
+    Backend/DebugMessageHandler.h
 
 RC_ICONS = Icons/qbittorrent-logo.svg

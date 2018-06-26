@@ -1,9 +1,6 @@
 #include "GlobalTransferInfo.h"
 
-GlobalTransferInfo::GlobalTransferInfo(QNetworkAccessManager *networkAccessManager, QObject *parent) : QObject(parent),
-	m_networkAccessManager(networkAccessManager)
-{
-	connect(&m_updateTimer, &QTimer::timeout, this, &GlobalTransferInfo::update);
+GlobalTransferInfo::GlobalTransferInfo(QNetworkAccessManager *networkAccessManager, QObject *parent) : AbstractApiInterface (networkAccessManager, parent) {
 	m_updateTimer.start(500);
 }
 
@@ -43,10 +40,6 @@ void GlobalTransferInfo::update() {
 			transferSpeedChanged();
 		}
 	});
-}
-
-QUrl GlobalTransferInfo::urlWithPath(const QString &path) {
-	return QUrl(settings.value("url").toString() + path);
 }
 
 void GlobalTransferInfo::setUploadRate(const quint64 &uploadRate) {

@@ -6,8 +6,10 @@
 #include <QQmlEngine>
 
 //Internal headers
-#include "WebConnector.h"
-#include "GlobalTransferInfo.h"
+#include "Torrents/Torrents.h"
+#include "DebugMessageHandler.h"
+#include "WebConnector/WebConnector.h"
+#include "GlobalTransferInfo/GlobalTransferInfo.h"
 
 class Backend : public QObject
 {
@@ -15,6 +17,7 @@ class Backend : public QObject
 	public:
 		explicit Backend(QObject *parent = nullptr);
 
+		static QObject *torrents(QQmlEngine *engine, QJSEngine *scriptEngine);
 		static QObject *webConnector(QQmlEngine *engine, QJSEngine *scriptEngine);
 		static QObject *globalTransferInfo(QQmlEngine *engine, QJSEngine *scriptEngine);
 
