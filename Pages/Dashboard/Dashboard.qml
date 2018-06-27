@@ -1,6 +1,6 @@
-import QtQuick 2.0
+import QtQuick 2.11
 import io.backend 1.0
-import QtQuick.Controls 2.2
+import QtQuick.Controls 2.4
 import "../../Controls/TopBar"
 import "../../Controls/SideBar"
 Item {
@@ -16,7 +16,6 @@ Item {
         onToggledChanged: {
             if(topbar.toggled) drawer.open()
             else drawer.close()
-            Torrents.update()
         }
     }
 

@@ -1,7 +1,7 @@
-import QtQuick 2.0
+import QtQuick 	2.11
 import io.backend 1.0;
 import "../BurgerMenuButton"
-import QtQuick.Controls 2.3
+import QtQuick.Controls 2.4
 
 Item {
     width: 400

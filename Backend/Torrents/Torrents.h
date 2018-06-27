@@ -5,6 +5,7 @@
 #include <QObject>
 #include <QUrlQuery>
 #include <QJsonObject>
+#include <QStringListModel>
 
 //STD framework
 #include <functional>
@@ -17,13 +18,20 @@ class Torrents : public AbstractApiInterface
 		Q_OBJECT
 	public:
 		enum Status {All, Downloading, Completed, Paused, Active, Inactive};
-		Torrents(QNetworkAccessManager *networkAccessManager, QObject *parent = nullptr);
 
 		Q_ENUM(Status)
+		Q_PROPERTY(QStringListModel* categories READ categories NOTIFY categoriesChanged)
+		Torrents(QNetworkAccessManager *networkAccessManager, QObject *parent = nullptr);
+
+		QStringListModel *categories();
 
 	private:
 		void getPartialData(std::function<void(const QJsonObject&)> callback);
 		void processTorrents(const QJsonObject &torrents, const QJsonArray &removedTorrents);
+		void processCategories(const QJsonArray &categories, const QJsonArray &removedCategories);
+
+	signals:
+		void categoriesChanged();
 
 	private slots:
 		void update();

@@ -1,11 +1,11 @@
-import QtQuick 2.6
+import QtQuick 	2.11
+import io.backend 1.0
 import QtQuick.Controls 2.4
 
 Item {
     ListView {
                id: listView
                anchors.fill: parent
-
                headerPositioning: ListView.OverlayHeader
                header: Pane {
                    id: header
@@ -37,38 +37,10 @@ Item {
                    }
                }
 
-               model:   ListModel {
-                   ListElement {
-                       name: "All"
-                   }
-                   ListElement {
-                       name: "Downloading"
-                   }
-                   ListElement {
-                       name: "Seeding"
-                   }
-                   ListElement {
-                       name: "Completed"
-                   }
-                   ListElement {
-                       name: "Resumed"
-                   }
-                   ListElement {
-                       name: "Paused"
-                   }
-                   ListElement {
-                       name: "Active"
-                   }
-                   ListElement {
-                       name: "Inactive"
-                   }
-                   ListElement {
-                       name: "Errored"
-                   }
-               }
+               model: Torrents.categories
 
-               delegate: ItemDelegate {
-                   text: qsTr(name)
+               delegate: Text {
+                   text: display
                    width: parent.width
                }
 
