@@ -2,7 +2,7 @@
 
 Torrents::Torrents(QNetworkAccessManager *networkAccessManager, QObject *parent) : AbstractApiInterface(networkAccessManager, parent), m_rid(0)
 {
-	m_updateTimer.start(1000);
+	m_updateTimer.start(100);
 	connect(&m_categories, &QStringListModel::dataChanged, this, &Torrents::categoriesChanged);
 }
 

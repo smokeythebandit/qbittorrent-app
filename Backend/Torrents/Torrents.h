@@ -5,6 +5,7 @@
 #include <QObject>
 #include <QUrlQuery>
 #include <QJsonObject>
+#include <QStringList>
 #include <QStringListModel>
 
 //STD framework

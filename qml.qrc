@@ -9,5 +9,6 @@
     </qresource>
     <qresource prefix="/Icons">
         <file>Icons/qbittorrent-logo.svg</file>
+        <file>Icons/settings.svg</file>
     </qresource>
 </RCC>

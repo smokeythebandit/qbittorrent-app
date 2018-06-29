@@ -69,11 +69,9 @@ Item {
 
         Text {
             id: text1
-            x: 264
-            y: 22
             width: 70
             text: GlobalTransferInfo.transferSpeed
-            horizontalAlignment: Text.AlignHCenter
+            horizontalAlignment: Text.AlignLeft
             anchors.verticalCenterOffset: 0
             anchors.verticalCenter: parent.verticalCenter
             anchors.right: parent.right

@@ -27,10 +27,14 @@ Window {
         }
     }
 
-
-    Dashboard {
-        id: dashboard
+    StackView {
         anchors.fill: parent
+
+        Dashboard {
+            id: dashboard
+            anchors.fill: parent
+        }
+
     }
 
     Popup {

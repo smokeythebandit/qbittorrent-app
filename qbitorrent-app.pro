@@ -23,7 +23,8 @@ SOURCES += \
     Backend/GlobalTransferInfo/GlobalTransferInfo.cpp \
     Backend/Torrents/Torrents.cpp \
     Backend/AbstractApiInterface.cpp \
-    Backend/DebugMessageHandler.cpp
+    Backend/DebugMessageHandler.cpp \
+    Backend/Torrents/Categories.cpp
 
 RESOURCES += qml.qrc
 
@@ -44,6 +45,19 @@ HEADERS += \
     Backend/GlobalTransferInfo/GlobalTransferInfo.h \
     Backend/Torrents/Torrents.h \
     Backend/AbstractApiInterface.h \
-    Backend/DebugMessageHandler.h
+    Backend/DebugMessageHandler.h \
+    Backend/Torrents/Categories.h
 
 RC_ICONS = Icons/qbittorrent-logo.svg
+
+DISTFILES += \
+    Android/splash.xml \
+    android/AndroidManifest.xml \
+    android/gradle/wrapper/gradle-wrapper.jar \
+    android/gradlew \
+    android/res/values/libs.xml \
+    android/build.gradle \
+    android/gradle/wrapper/gradle-wrapper.properties \
+    android/gradlew.bat
+
+ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android

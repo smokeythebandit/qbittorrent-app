@@ -27,7 +27,9 @@ Item {
 
                footer: ItemDelegate {
                    id: footer
-                   text: qsTr("Footer")
+                   icon.source: "qrc:/Icons/Icons/settings.svg"
+                   icon.height: 24
+                   text: qsTr("Settings")
                    width: parent.width
 
                    MenuSeparator {
@@ -39,8 +41,8 @@ Item {
 
                model: Torrents.categories
 
-               delegate: Text {
-                   text: display
+               delegate: CheckDelegate {
+                   text: model.display
                    width: parent.width
                }
 

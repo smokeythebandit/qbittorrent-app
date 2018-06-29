@@ -27,6 +27,22 @@ void AbstractApiInterface::get(const QUrl &url, const std::function<void (QNetwo
 	});
 }
 
+void AbstractApiInterface::post(const QUrl &url, const QByteArray &postdata, const std::function<void (QNetworkReply *)> callback) {
+	QNetworkReply*	reply = m_networkAccessManager->post(QNetworkRequest(url), postdata);
+	connect(reply, &QNetworkReply::finished, [=] () {
+		if(callback) callback(reply);
+	});
+	connect(reply, QOverload<QNetworkReply::NetworkError>::of(&QNetworkReply::error), [=](QNetworkReply::NetworkError code) {
+		Q_UNUSED(code)
+		qWarning() << "Connection error during POST on" << url << reply->errorString();
+		if(callback) callback(reply);
+	});
+}
+
+void AbstractApiInterface::post(const QUrl &url, const QString &postdata, const std::function<void (QNetworkReply *)> callback) {
+	post(url, postdata, callback);
+}
+
 QUrl AbstractApiInterface::urlWithPath(const QString &path) {
 	return QUrl(url().toString() + path);
 }
