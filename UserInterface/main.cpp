@@ -1,7 +1,13 @@
+//Qt framework
 #include <QIcon>
-#include <Backend/Backend.h>
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
+
+//Internal headers
+#include "Backend.h"
+#include "Torrents/Torrents.h"
+#include "WebConnector/WebConnector.h"
+#include "GlobalTransferInfo/GlobalTransferInfo.h"
 
 int main(int argc, char *argv[])
 {

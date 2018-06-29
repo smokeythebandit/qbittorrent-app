@@ -12,13 +12,13 @@ void Torrents::getPartialData(std::function<void (const QJsonObject &)> callback
 	get(urlWithPath("/sync/maindata?" + urlQuery.query()), [=](QNetworkReply *reply) {
 		if(reply->attribute(QNetworkRequest::HttpStatusCodeAttribute) == 200) {
 			QJsonDocument	jsonDocument	= QJsonDocument::fromJson(reply->readAll());
+            qDebug() << jsonDocument.object();
 			callback(jsonDocument.object());
 		} else callback(QJsonObject());
 	});
 }
 
-void Torrents::processCategories(const QJsonArray &categories, const QJsonArray &removedCategories)
-{
+void Torrents::processCategories(const QJsonArray &categories, const QJsonArray &removedCategories) {
 	//Adding new categories
 	foreach(const QVariant &categorie, categories.toVariantList()) {
 		if(!m_categories.stringList().contains(categorie.toString())) {
@@ -34,14 +34,13 @@ void Torrents::processCategories(const QJsonArray &categories, const QJsonArray 
 			m_categories.removeRow(index.row());
 		}
 	}
-	m_categories.sort(0, Qt::AscendingOrder);
 }
 
 void Torrents::processTorrents(const QJsonObject &torrents, const QJsonArray &removedTorrents) {
 	QVariantList removedTorrentsList = removedTorrents.toVariantList();
 	//Adding new torrents
 	foreach (const QString &torrentHash, torrents.keys()) {
-		if(m_torrents.contains(torrentHash)) m_torrents.insert(torrentHash, torrentHash);
+        if(!m_torrents.contains(torrentHash)) m_torrents.insert(torrentHash, torrentHash);
 	}
 	//Removing old torrents
 	foreach (const QVariant &removedTorrentHash, removedTorrentsList) {

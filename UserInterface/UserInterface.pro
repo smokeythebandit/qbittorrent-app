@@ -1,10 +1,6 @@
 QT += quick
 CONFIG += c++14 warn_on
 
-linux-g++ {
-    QMAKE_CXXFLAGS += -Werror
-}
-
 # The following define makes your compiler emit warnings if you use
 # any feature of Qt which as been marked deprecated (the exact warnings
 # depend on your compiler). Please consult the documentation of the
@@ -17,14 +13,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-        main.cpp \
-    Backend/Backend.cpp \
-    Backend/WebConnector/WebConnector.cpp \
-    Backend/GlobalTransferInfo/GlobalTransferInfo.cpp \
-    Backend/Torrents/Torrents.cpp \
-    Backend/AbstractApiInterface.cpp \
-    Backend/DebugMessageHandler.cpp \
-    Backend/Torrents/Categories.cpp
+        main.cpp
 
 RESOURCES += qml.qrc
 
@@ -39,16 +28,8 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
-HEADERS += \
-    Backend/Backend.h \
-    Backend/WebConnector/WebConnector.h \
-    Backend/GlobalTransferInfo/GlobalTransferInfo.h \
-    Backend/Torrents/Torrents.h \
-    Backend/AbstractApiInterface.h \
-    Backend/DebugMessageHandler.h \
-    Backend/Torrents/Categories.h
 
-RC_ICONS = Icons/qbittorrent-logo.svg
+#RC_ICONS = Icons/qbittorrent-logo.svg
 
 DISTFILES += \
     Android/splash.xml \
@@ -61,3 +42,5 @@ DISTFILES += \
     android/gradlew.bat
 
 ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android
+
+include(../Backend/Backend.pri)

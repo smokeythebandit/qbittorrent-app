@@ -6,12 +6,13 @@
 #include <QQmlEngine>
 
 //Internal headers
+#include "backend_global.h"
 #include "Torrents/Torrents.h"
 #include "DebugMessageHandler.h"
 #include "WebConnector/WebConnector.h"
 #include "GlobalTransferInfo/GlobalTransferInfo.h"
 
-class Backend : public QObject
+class BACKEND_EXPORT Backend : public QObject
 {
 		Q_OBJECT
 	public:

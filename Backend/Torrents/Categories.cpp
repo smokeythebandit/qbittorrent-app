@@ -18,6 +18,6 @@ void Categories::setSelected(bool selected) {
 }
 
 void Categories::remove() {
-	post(urlWithPath("/command/removeCategories"), name());
+    post(urlWithPath("/command/removeCategories"), name().toLatin1());
 }
 

@@ -6,9 +6,10 @@
 #include <QObject>
 
 //Internal headers
+#include "../backend_global.h"
 #include "../AbstractApiInterface.h"
 
-class GlobalTransferInfo : public AbstractApiInterface
+class BACKEND_EXPORT GlobalTransferInfo : public AbstractApiInterface
 {
 		Q_OBJECT
 	public:

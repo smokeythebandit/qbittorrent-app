@@ -6,11 +6,14 @@
 #include <QObject>
 #include <QDateTime>
 
+//Internal headers
+#include "backend_global.h"
+
 //Stabdard libraries
 #include <stdint.h>
 #include <iostream>
 
-class DebugMessageHandler : public QObject
+class BACKEND_EXPORT DebugMessageHandler : public QObject
 {
 		Q_OBJECT
 	public:

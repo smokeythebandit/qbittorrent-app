@@ -12,9 +12,10 @@
 #include <functional>
 
 //Internal headers
+#include "../backend_global.h"
 #include "../AbstractApiInterface.h"
 
-class Torrents : public AbstractApiInterface
+class BACKEND_EXPORT Torrents : public AbstractApiInterface
 {
 		Q_OBJECT
 	public:

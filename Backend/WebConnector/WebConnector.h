@@ -11,9 +11,10 @@
 #include <functional>
 
 //Internal headers
+#include "../backend_global.h"
 #include "../AbstractApiInterface.h"
 
-class WebConnector : public AbstractApiInterface
+class BACKEND_EXPORT WebConnector : public AbstractApiInterface
 {
 		Q_OBJECT
 	public:

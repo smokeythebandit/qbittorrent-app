@@ -5,10 +5,13 @@
 #include <QObject>
 #include <QtNetwork>
 
+//Internal headers
+#include "backend_global.h"
+
 //C++ standard library
 #include <functional>
 
-class AbstractApiInterface : public QObject
+class BACKEND_EXPORT AbstractApiInterface : public QObject
 {
 		Q_OBJECT
 	public:
@@ -30,7 +33,6 @@ class AbstractApiInterface : public QObject
 	protected slots:
 		virtual void get(const QUrl &url, const std::function<void(QNetworkReply *)> callback) final;
 		virtual void post(const QUrl &url, const QByteArray &postdata, const std::function<void(QNetworkReply *)> callback = std::function<void(QNetworkReply *)>()) final;
-		virtual void post(const QUrl &url, const QString &postdata, const std::function<void(QNetworkReply *)> callback = std::function<void(QNetworkReply *)>()) final;
 
 		virtual void update() = 0;
 		QUrl urlWithPath(const QString &path);
