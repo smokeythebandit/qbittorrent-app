@@ -14,11 +14,6 @@ Window {
     height: 960
     title: qsTr("qBittorrent Mobile Client")
 
-
-    Component.onCompleted: {
-        WebConnector.attemptLogin();
-    }
-
     Connections {
         target: WebConnector
         onLoggedInChanged: {

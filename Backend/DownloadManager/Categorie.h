@@ -1,20 +1,21 @@
-#ifndef CATEGORIES_H
-#define CATEGORIES_H
+#ifndef CATEGORIE_H
+#define CATEGORIE_H
 
 //Qt framework
 #include <QObject>
+#include <QQmlEngine>
 
 //Internal headers
 #include "../backend_global.h"
 #include "../AbstractApiInterface.h"
 
-class BACKEND_EXPORT Categories : public AbstractApiInterface
+class BACKEND_EXPORT Categorie : public AbstractApiInterface
 {
 		Q_OBJECT
 	public:
 		Q_PROPERTY(bool selected READ selected WRITE setSelected NOTIFY selectedChanged)
 		Q_PROPERTY(QString name READ name)
-		Categories(QString name, QNetworkAccessManager *networkAccessManager, QObject *parent = nullptr);
+        Categorie(QString name, QNetworkAccessManager *networkAccessManager, QObject *parent = nullptr);
 
 		/**
 		 * @brief name Gets the name of this category
@@ -38,7 +39,8 @@ class BACKEND_EXPORT Categories : public AbstractApiInterface
 		 * @brief remove Removes this torrent
 		 */
 		void remove();
-
+protected slots:
+        virtual void update();
 
 	signals:
 		/**
@@ -51,4 +53,4 @@ class BACKEND_EXPORT Categories : public AbstractApiInterface
 		QString m_name;
 };
 
-#endif // CATEGORIES_H
+#endif // CATEGORIE_H

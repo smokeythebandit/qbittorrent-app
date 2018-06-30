@@ -7,7 +7,7 @@
 
 //Internal headers
 #include "backend_global.h"
-#include "Torrents/Torrents.h"
+#include "Torrents/DownloadManager.h"
 #include "DebugMessageHandler.h"
 #include "WebConnector/WebConnector.h"
 #include "GlobalTransferInfo/GlobalTransferInfo.h"
@@ -18,10 +18,9 @@ class BACKEND_EXPORT Backend : public QObject
 	public:
 		explicit Backend(QObject *parent = nullptr);
 
-		static QObject *torrents(QQmlEngine *engine, QJSEngine *scriptEngine);
+		static QObject *downloadManager(QQmlEngine *engine, QJSEngine *scriptEngine);
 		static QObject *webConnector(QQmlEngine *engine, QJSEngine *scriptEngine);
 		static QObject *globalTransferInfo(QQmlEngine *engine, QJSEngine *scriptEngine);
-
 		static QNetworkAccessManager *networkAccessManager();
 
 	private:

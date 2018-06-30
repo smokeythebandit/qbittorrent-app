@@ -46,9 +46,9 @@ Item {
         ScrollBar.horizontal.interactive: true
         ScrollBar.vertical.interactive: true
         ListView {
-                  model: 200
+                  model: DownloadManager.torrents
                   delegate: ItemDelegate {
-                      text: "Item " + index
+                      text: model.hash
                   }
               }
     }

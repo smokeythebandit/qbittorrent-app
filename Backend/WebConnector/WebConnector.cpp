@@ -2,6 +2,7 @@
 
 WebConnector::WebConnector(QNetworkAccessManager *networkAccessManager, QObject *parent) : AbstractApiInterface (networkAccessManager, parent) {
 	loadCookies();
+    attemptLogin();
 }
 
 WebConnector::~WebConnector() {

@@ -1,4 +1,4 @@
-QT += qml network
+QT += qml quick network
 
 TARGET = Backend
 TEMPLATE = lib
@@ -18,23 +18,25 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     GlobalTransferInfo/GlobalTransferInfo.cpp \
-    Torrents/Categories.cpp \
-    Torrents/Torrents.cpp \
     WebConnector/WebConnector.cpp \
     AbstractApiInterface.cpp \
     Backend.cpp \
-    DebugMessageHandler.cpp
+    DebugMessageHandler.cpp \
+    Torrents/Categorie.cpp \
+    Torrents/Torrent.cpp \
+    Torrents/DownloadManager.cpp
 
 
 HEADERS += \
     GlobalTransferInfo/GlobalTransferInfo.h \
-    Torrents/Categories.h \
-    Torrents/Torrents.h \
     WebConnector/WebConnector.h \
     AbstractApiInterface.h \
     Backend.h \
     backend_global.h \
-    DebugMessageHandler.h
+    DebugMessageHandler.h \
+    Torrents/Categorie.h \
+    Torrents/Torrent.h \
+    Torrents/DownloadManager.h
 
 
 SUBDIRS += \
@@ -43,5 +45,4 @@ SUBDIRS += \
 DISTFILES += \
     Backend.pri
 
-
-
+include(../Libraries/QObjectListModel/de_skycoder42_qobjectlistmodel.pri)

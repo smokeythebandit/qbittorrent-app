@@ -5,11 +5,11 @@ Backend::Backend(QObject *parent) : QObject(parent)
 
 }
 
-QObject *Backend::torrents(QQmlEngine *engine, QJSEngine *scriptEngine)
+QObject *Backend::downloadManager(QQmlEngine *engine, QJSEngine *scriptEngine)
 {
 	Q_UNUSED(engine)
 	Q_UNUSED(scriptEngine)
-	static Torrents torrents(networkAccessManager());
+	static DownloadManager torrents(networkAccessManager());
 	return &torrents;
 }
 

@@ -39,11 +39,12 @@ Item {
                    }
                }
 
-               model: Torrents.categories
+               model: DownloadManager.categories
 
                delegate: CheckDelegate {
-                   text: model.display
+                   text: model.name
                    width: parent.width
+                   checked: model.selected
                }
 
                ScrollIndicator.vertical: ScrollIndicator { }

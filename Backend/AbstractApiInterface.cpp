@@ -19,11 +19,13 @@ void AbstractApiInterface::get(const QUrl &url, const std::function<void (QNetwo
 	QNetworkReply*	reply = m_networkAccessManager->get(QNetworkRequest(url));
 	connect(reply, &QNetworkReply::finished, [=] () {
 		callback(reply);
+        reply->deleteLater();
 	});
 	connect(reply, QOverload<QNetworkReply::NetworkError>::of(&QNetworkReply::error), [=](QNetworkReply::NetworkError code) {
 		Q_UNUSED(code)
 		qWarning() << "Connection error during GET on" << url << reply->errorString();
 		callback(reply);
+        reply->deleteLater();
 	});
 }
 
@@ -31,12 +33,14 @@ void AbstractApiInterface::post(const QUrl &url, const QByteArray &postdata, con
 	QNetworkReply*	reply = m_networkAccessManager->post(QNetworkRequest(url), postdata);
 	connect(reply, &QNetworkReply::finished, [=] () {
 		if(callback) callback(reply);
+        delete reply;
 	});
 	connect(reply, QOverload<QNetworkReply::NetworkError>::of(&QNetworkReply::error), [=](QNetworkReply::NetworkError code) {
 		Q_UNUSED(code)
 		qWarning() << "Connection error during POST on" << url << reply->errorString();
 		if(callback) callback(reply);
-	});
+        delete reply;
+    });
 }
 
 QUrl AbstractApiInterface::urlWithPath(const QString &path) {

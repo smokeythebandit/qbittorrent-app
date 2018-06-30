@@ -5,7 +5,10 @@
 
 //Internal headers
 #include "Backend.h"
-#include "Torrents/Torrents.h"
+#include "qobjectlistmodel.h"
+#include "Torrents/DownloadManager.h"
+#include "Torrents/Torrent.h"
+#include "Torrents/Categorie.h"
 #include "WebConnector/WebConnector.h"
 #include "GlobalTransferInfo/GlobalTransferInfo.h"
 
@@ -14,11 +17,16 @@ int main(int argc, char *argv[])
 
 	QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 	//Register all classes
-	qmlRegisterSingletonType<Torrents>("io.backend", 1, 0, "Torrents", &Backend::torrents);
+    qmlRegisterSingletonType<DownloadManager>("io.backend", 1, 0, "DownloadManager", &Backend::downloadManager);
 	qmlRegisterSingletonType<WebConnector>("io.backend", 1, 0, "WebConnector", &Backend::webConnector);
 	qmlRegisterSingletonType<GlobalTransferInfo>("io.backend", 1, 0, "GlobalTransferInfo", &Backend::globalTransferInfo);
+    qmlRegisterType<Categorie>();
+    qmlRegisterType<Torrent>();
 
-	QGuiApplication app(argc, argv);
+    qRegisterMetaType<QGenericListModel<Categorie>*>("QGenericListModel<Categorie>*");
+    qRegisterMetaType<QGenericListModel<Torrent>*>("QGenericListModel<Torrent>*");
+
+    QGuiApplication app(argc, argv);
 	DebugMessageHandler::createInstance(true);
 	app.setWindowIcon(QIcon(":/Icons/Icons/qbittorrent-logo.svg"));
 	QCoreApplication::setOrganizationName("qBittorrent");
