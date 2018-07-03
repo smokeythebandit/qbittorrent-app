@@ -40,11 +40,11 @@ class BACKEND_EXPORT DownloadManager : public AbstractApiInterface
         void getPartialData(std::function<void(const QJsonObject&)> callback);
 		void processTorrents(const QJsonObject &torrents, const QJsonArray &removedTorrents);
 		void processCategories(const QJsonArray &categories, const QJsonArray &removedCategories);
+        static void processTorrentData(const QJsonObject &responseData, Torrent* torrent);
 
 	signals:
 		void categoriesChanged();
         void torrentsChanged();
-
 
 	private slots:
 		void update();

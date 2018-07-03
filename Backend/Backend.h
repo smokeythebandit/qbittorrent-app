@@ -7,9 +7,9 @@
 
 //Internal headers
 #include "backend_global.h"
-#include "Torrents/DownloadManager.h"
 #include "DebugMessageHandler.h"
 #include "WebConnector/WebConnector.h"
+#include "DownloadManager/DownloadManager.h"
 #include "GlobalTransferInfo/GlobalTransferInfo.h"
 
 class BACKEND_EXPORT Backend : public QObject

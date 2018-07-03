@@ -22,9 +22,9 @@ SOURCES += \
     AbstractApiInterface.cpp \
     Backend.cpp \
     DebugMessageHandler.cpp \
-    Torrents/Categorie.cpp \
-    Torrents/Torrent.cpp \
-    Torrents/DownloadManager.cpp
+    DownloadManager/Categorie.cpp \
+    DownloadManager/Torrent.cpp \
+    DownloadManager/DownloadManager.cpp
 
 
 HEADERS += \
@@ -34,9 +34,9 @@ HEADERS += \
     Backend.h \
     backend_global.h \
     DebugMessageHandler.h \
-    Torrents/Categorie.h \
-    Torrents/Torrent.h \
-    Torrents/DownloadManager.h
+    DownloadManager/Categorie.h \
+    DownloadManager/Torrent.h \
+    DownloadManager/DownloadManager.h
 
 
 SUBDIRS += \

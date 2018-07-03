@@ -12,7 +12,12 @@ QUrl AbstractApiInterface::url() const {
 
 void AbstractApiInterface::setUrl(const QUrl &value) {
 	m_settings.setValue("url", value);
-	emit urlChanged();
+    emit urlChanged();
+}
+
+QString AbstractApiInterface::valueToDataSize(quint64 value) {
+    QLocale locale;
+    return locale.formattedDataSize(value, 2, QLocale::DataSizeIecFormat);
 }
 
 void AbstractApiInterface::get(const QUrl &url, const std::function<void (QNetworkReply *)> callback) {

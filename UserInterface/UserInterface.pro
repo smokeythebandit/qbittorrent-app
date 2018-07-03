@@ -1,4 +1,4 @@
-QT += quick
+QT += quick svg widgets
 CONFIG += c++14 warn_on qtquickcompiler
 
 # The following define makes your compiler emit warnings if you use
@@ -46,7 +46,8 @@ DISTFILES += \
     android/res/values/libs.xml \
     android/build.gradle \
     android/gradle/wrapper/gradle-wrapper.properties \
-    android/gradlew.bat
+    android/gradlew.bat \
+    Controls/Popups/LoginPopup/LoginPopup.qml
 
 ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android
 

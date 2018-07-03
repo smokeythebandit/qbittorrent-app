@@ -1,10 +1,14 @@
 import QtQuick 2.11
 import io.backend 1.0
+import QtQuick.Dialogs 1.3
 import QtQuick.Controls 2.4
+import QtQuick.Window 2.3
+import "../../Controls/Delegates/TorrentDelegate"
 import "../../Controls/TopBar"
 import "../../Controls/SideBar"
 Item {
     id: dashboard
+
     TopBar {
         id: topbar
         height: 50
@@ -34,7 +38,21 @@ Item {
             anchors.fill: parent
         }
     }
+    Popup {
+        id: popup
+        x: (parent.width - width) / 2
+        y: (parent.height - height) / 2
+        z:1000
+        width: 300
+        height: 200
+        modal: true
+        focus: true
+        TextInput{
+            width: parent.width
+        }
 
+        closePolicy: Popup.CloseOnEscape | Popup.CloseOnPressOutsideParent
+    }
     ScrollView {
         z: 1
         id: scrollView
@@ -46,10 +64,18 @@ Item {
         ScrollBar.horizontal.interactive: true
         ScrollBar.vertical.interactive: true
         ListView {
-                  model: DownloadManager.torrents
-                  delegate: ItemDelegate {
-                      text: model.hash
-                  }
-              }
+            model: DownloadManager.torrents
+            delegate: TorrentDelegate {
+                width: parent.width
+                name: model.name
+                size: model.size
+                state: model.state
+                progress: model.progress
+                onRenameRequested: {
+                    popup.open()
+                }
+                onClicked: popup.open()
+            }
+        }
     }
 }

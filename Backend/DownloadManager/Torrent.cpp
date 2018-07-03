@@ -27,11 +27,11 @@ void Torrent::setSize(const quint64 &size) {
     emit sizeChanged();
 }
 
-float Torrent::progress() const {
+qreal Torrent::progress() const {
     return m_progress;
 }
 
-void Torrent::setProgress(float progress) {
+void Torrent::setProgress(qreal progress) {
     m_progress = progress;
     emit progressChanged();
 }
@@ -100,11 +100,11 @@ void Torrent::setNumberIncompletedSeeds(const quint64 &numberIncompletedSeeds) {
     emit numberIncompletedSeedsChanged();
 }
 
-float Torrent::ratio() const {
+qreal Torrent::ratio() const {
     return m_ratio;
 }
 
-void Torrent::setRatio(float ratio) {
+void Torrent::setRatio(qreal ratio) {
     m_ratio = ratio;
     emit ratioChanged();
 }

@@ -15,7 +15,7 @@ public:
     Q_PROPERTY(QString hash READ hash)
     Q_PROPERTY(QString name READ name WRITE setName NOTIFY nameChanged)
     Q_PROPERTY(quint64 size READ size WRITE setSize NOTIFY sizeChanged)
-    Q_PROPERTY(float   progress READ progress WRITE setProgress NOTIFY progressChanged)
+    Q_PROPERTY(qreal   progress READ progress WRITE setProgress NOTIFY progressChanged)
     Q_PROPERTY(quint64 downloadSpeed READ downloadSpeed WRITE setDownloadSpeed NOTIFY downloadSpeedChanged)
     Q_PROPERTY(quint64 uploadSpeed READ uploadSpeed WRITE setUploadSpeed NOTIFY uploadSpeedChanged)
     Q_PROPERTY(quint64 priority READ priority WRITE setPriority NOTIFY priorityChanged)
@@ -23,7 +23,7 @@ public:
     Q_PROPERTY(quint64 numberCompletedSeeds READ numberCompletedSeeds WRITE setNumberCompletedSeeds NOTIFY numberCompletedSeedsChanged)
     Q_PROPERTY(quint64 numberLeechers READ numberLeechers WRITE setNumberLeechers NOTIFY numberLeechersChanged)
     Q_PROPERTY(quint64 numberIncompletedSeeds READ numberIncompletedSeeds WRITE setNumberIncompletedSeeds NOTIFY numberIncompletedSeedsChanged)
-    Q_PROPERTY(float   ratio READ ratio WRITE setRatio NOTIFY ratioChanged)
+    Q_PROPERTY(qreal  ratio READ ratio WRITE setRatio NOTIFY ratioChanged)
     Q_PROPERTY(quint64 eta READ eta WRITE setEta NOTIFY etaChanged)
     Q_PROPERTY(QString state READ state WRITE setState NOTIFY stateChanged)
     Q_PROPERTY(bool    sequentialDownload READ sequentialDownload WRITE setSequentialDownload NOTIFY sequentialDownloadChanged)
@@ -41,8 +41,8 @@ public:
     quint64 size() const;
     void setSize(const quint64 &size);
 
-    float progress() const;
-    void setProgress(float progress);
+    qreal progress() const;
+    void setProgress(qreal progress);
 
     quint64 downloadSpeed() const;
     void setDownloadSpeed(const quint64 &downloadSpeed);
@@ -65,8 +65,8 @@ public:
     quint64 numberIncompletedSeeds() const;
     void setNumberIncompletedSeeds(const quint64 &numberIncompletedSeeds);
 
-    float ratio() const;
-    void setRatio(float ratio);
+    qreal ratio() const;
+    void setRatio(qreal ratio);
 
     quint64 eta() const;
     void setEta(const quint64 &eta);
@@ -116,7 +116,7 @@ private:
     QString m_hash;
     QString m_name;
     quint64 m_size;
-    float   m_progress;
+    qreal   m_progress;
     quint64 m_downloadSpeed;
     quint64 m_uploadSpeed;
     quint64 m_priority;
@@ -124,7 +124,7 @@ private:
     quint64 m_numberCompletedSeeds;
     quint64 m_numberLeechers;
     quint64 m_numberIncompletedSeeds;
-    float   m_ratio;
+    qreal   m_ratio;
     quint64 m_eta;
     QString m_state;
     bool    m_sequentialDownload;

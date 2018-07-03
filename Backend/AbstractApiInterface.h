@@ -30,6 +30,9 @@ class BACKEND_EXPORT AbstractApiInterface : public QObject
 		 */
 		void setUrl(const QUrl &value);
 
+public slots:
+        static QString valueToDataSize(quint64 value);
+
 	protected slots:
 		virtual void get(const QUrl &url, const std::function<void(QNetworkReply *)> callback) final;
 		virtual void post(const QUrl &url, const QByteArray &postdata, const std::function<void(QNetworkReply *)> callback = std::function<void(QNetworkReply *)>()) final;
