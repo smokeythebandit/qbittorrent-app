@@ -1,0 +1,3 @@
+[submodule "Libraries/QObjectListModel"]
+	path = Libraries/QObjectListModel
+	url = https://github.com/Skycoder42/QObjectListModel
